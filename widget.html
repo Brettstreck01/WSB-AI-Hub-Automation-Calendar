@@ -81,7 +81,6 @@
       opacity: 0.55;
     }
 
-    .event-card { cursor: pointer; }
 
     .event-description {
       font-size: 13px;
@@ -111,6 +110,7 @@
     }
     .expand-btn:hover { text-decoration: underline; }
 
+
     .no-events {
       text-align: center;
       padding: 48px 24px;
@@ -126,21 +126,8 @@
 <div id="events-list" hidden></div>
 
 <script>
-  // ── CONFIG: fill in your values ────────────────────────────────────────────
-  const CALENDAR_ID = "571c1426d34b50823a148083c43dec1654936301af8452dbbee3f679d5697ded@group.calendar.google.com";   // e.g. abc123@group.calendar.google.com
-  const API_KEY     = "AIzaSyD2FKsm28pIyY4QwNup3gra70SpnK1lWP8";        // Google Calendar API key
-  // ──────────────────────────────────────────────────────────────────────────
-
   function buildApiUrl() {
-    const now = new Date().toISOString();
-    const params = new URLSearchParams({
-      key: API_KEY,
-      timeMin: now,
-      orderBy: "startTime",
-      singleEvents: "true",
-      maxResults: "20",
-    });
-    return `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?${params}`;
+    return "/api/events";
   }
 
   function formatDate(gcalDateTime) {
